@@ -61,4 +61,5 @@ function gamble(bet) {
     comb = Number(String(first+1) + String(second+1) + String(third+1))
     var add = 16;
     output(first+add,second+add,third+add)
+    document.getElementById("money").innerHTML = "you have " +  String(money - bet) + "$";
 }
