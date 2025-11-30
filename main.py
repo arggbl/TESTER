@@ -11,6 +11,11 @@ combos = [111,22,222,333,444]
 multipliers = [2,3,10,20,100]
 
 # set up variables /\
+def random(start,end):
+    return int(time.time()**2) % (end+1) + start
+
+def choice(array):
+    return array[random(0,len(array)-1)]
 
 def animate(e1,e2,e3,array):
     twisty = ['|','\\','-','/']
@@ -19,19 +24,19 @@ def animate(e1,e2,e3,array):
     for i in range(max([e1,e2,e3])):
         os.system('cls')
         if i < e1:
-            add = randint(1,3)
+            add = random(1,3)
             if add+a1 < e1:
                 a1 += add
             else:
                 a1 += 1
         if i < e2:
-            add = randint(1,3)
+            add = random(1,3)
             if add+a2 < e1:
                 a2 += add
             else:
                 a2 += 1
         if i < e3:
-            add = randint(1,3)
+            add = random(1,3)
             if add+a3 < e1:
                 a3 += add
             else:
