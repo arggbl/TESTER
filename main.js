@@ -24,18 +24,16 @@ for (let i = 1; i < 90; i++) {
 // setup variables /\
 // setup functions \/
 function output(i1,i2,i3) {
-    const up1 = i1 - 1,down1 = (i1 + 1) % length,up2 = i2 - 1,down2=(i2 + 1) % length,up3 = i3 - 1,down3=(i3 + 1) % length;
-
-    var length = symbols.length;
+    
     var string = `  <code>
   ____________________________________________ 
  /* * * * * * * * * * * * * * * * * * * * * * \\ 
  | L O S E  Y O U R  C O L L E G E  M O N E Y | 
  \\_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*/ 
  ______________       ____________________________ 
-| ` + symbols[up1] ` | ` + symbols[up2] + ` | ` + symbols[up3] + ` |     |🍬🍬🍬 - x2    🍋🍋 - x3   |
-|-`+symbols[i1]+`-|-`+symbols[i2]+`-|-`+symbols[i3]+`-|     |🍋🍋🍋 - x10  🐟🐟🐟 - x20  | 
-| ` + symbols[down1]+ ` | `+ symbols[down2] + ` | ` + symbols[down3] + ` |     | 🍓🍓🍓 - x 100        |
+| ` + i1` | ` + i2 + ` | ` + i3 + ` |     |🍬🍬🍬 - x2    🍋🍋 - x3   |
+|-`+i1+`-|-`+i2+`-|-`+i3+`-|     |🍋🍋🍋 - x10  🐟🐟🐟 - x20  | 
+| ` + i1+ ` | `+ i2 + ` | ` + i3 + ` |     | 🍓🍓🍓 - x 100        |
 \\--------------/     \\----------------------------/ </code>`;
     document.getElementById("output").innerHTML = string;
 }
@@ -71,8 +69,9 @@ function gamble(bet) {
     var add = 16;
     money-=bet;
     document.getElementById("result").innerHTML = "you lost " + bet + " dollars!";
+    var length = symbols.length;
 
-    output(first+add,second+add,third+add);
+    output(first,second,third);
     for (var i = 0; i < len(combos); i++){
         c = combos[i];
         if (toString(c) in toString(comb)) {
