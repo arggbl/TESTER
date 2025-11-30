@@ -49,6 +49,9 @@ function allIn(event) {
 }
 
 function gamble(bet) {
+    if (bet > money) {
+        return 0;
+    }
     var c,d,e,first,second,third;
     var comb;
     c = Math.random() * 100;
@@ -58,8 +61,9 @@ function gamble(bet) {
     first = chances[c];
     second = chances[d];
     third = chances[e];
-    comb = Number(String(first+1) + String(second+1) + String(third+1))
+    comb = Number(String(first+1) + String(second+1) + String(third+1));
     var add = 16;
-    output(first+add,second+add,third+add)
+    output(first+add,second+add,third+add);
     document.getElementById("money").innerHTML = "you have " +  String(money - bet) + "$";
+    return 0;
 }
