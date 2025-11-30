@@ -1,5 +1,5 @@
 #from time import sleep
-from random import choice, randint
+from time import time
 from pyscript import document
 import random
 global money, messages,symbols,chances,comos,multipliers
