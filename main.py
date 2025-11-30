@@ -88,3 +88,8 @@ def gamble(event):
     
     moneydiv = document.querySelector("#money")
     moneydiv.innerText = f"you have {money} dollars"
+    
+def test(event):
+    input_text = document.querySelector("#english")
+    moneydiv = document.querySelector("#result")
+    moneydiv.innerText = input_text.value
