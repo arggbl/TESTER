@@ -70,6 +70,7 @@ function gamble(bet) {
     var add = 16;
     money-=bet;
     document.getElementById("result").innerHTML = "you lost " + bet + " dollars!";
+    document.getElementById("money").innerHTML = "you have " +  String(money - bet) + "$";
 
     output(first+add,second+add,third+add);
     for (var i = 0; i < len(combos); i++){
@@ -78,10 +79,10 @@ function gamble(bet) {
             let gain = multipliers[i] * bet;
             document.getElementById("result").innerHTML = "you made " + gain + " dollars!";
             money += gain + bet
+            document.getElementById("money").innerHTML = "you have " +  String(money) + "$";
             break
         }
     }
 
-    document.getElementById("money").innerHTML = "you have " +  String(money - bet) + "$";
     return 0;
 }
