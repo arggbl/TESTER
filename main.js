@@ -26,15 +26,15 @@ function output(i1,i2,i3) {
     
     var length = symbols.length;
     var string = `  <pre>
-  ____________________________________________ <br>
- /* * * * * * * * * * * * * * * * * * * * * * \\ <br>
- | L O S E  Y O U R  C O L L E G E  M O N E Y | <br>
- \\_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*/ <br>
- ______________       ____________________________ <br>
-| ${symbols[i1-1]} | ${symbols[i2-1]} | ${symbols[i3-1]} |     |🍬🍬🍬 - x2    🍋🍋 - x3   | <br>
-|-${symbols[i1]}-|-${symbols[i2]}-|-${symbols[i3]}-|     |🍋🍋🍋 - x10  🐟🐟🐟 - x20  | <br>
-| ${symbols[(i1+1)%length]} | ${symbols[(i2+1)%length]} | ${symbols[(i3+1)%length]} |     | 🍓🍓🍓 - x 100        | <br>
-\\--------------/     \\----------------------------/ <pre>`;
+  ____________________________________________ 
+ /* * * * * * * * * * * * * * * * * * * * * * \\ 
+ | L O S E  Y O U R  C O L L E G E  M O N E Y | 
+ \\_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*/ 
+ ______________       ____________________________ 
+| ` + symbols[i1-1] ` | ` + symbols[i2-1] + ` | ` + symbols[i3-1] + ` |     |🍬🍬🍬 - x2    🍋🍋 - x3   |
+|-`+symbols[i1]+`-|-`+symbols[i2]+`-|-`+symbols[i3]+`-|     |🍋🍋🍋 - x10  🐟🐟🐟 - x20  | 
+| ` + symbols[(i1+1)%length]+ ` | `+ symbols[(i2+1)%length] + ` | ` + symbols[(i3+1)%length] + ` |     | 🍓🍓🍓 - x 100        |
+\\--------------/     \\----------------------------/ </pre>`;
     document.getElementById("output").innerHTML = string;
 }
 
@@ -48,7 +48,7 @@ function allIn(event) {
     gamble(money);
 }
 
-function RESET(event) {
+function reset(event) {
     money = 100;
 }
 
