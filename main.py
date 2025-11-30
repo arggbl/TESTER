@@ -1,6 +1,7 @@
 #from time import sleep
 #from random import choice, randint
 from pyscript import document
+import random
 
 money = 100
 messages= ["better keep gambling!","please dont urinate on the floor.", "you should watch this video: https://www.youtube.com/watch?v=AtzmDIlddPs", "remember kids, don't do drugs!", "Can you feel the crippling debt?"]
