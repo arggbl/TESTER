@@ -55,7 +55,7 @@ function reset(event) {
 
 function gamble(bet) {
     if (bet > money) {
-        return 0;
+        document.getElementById("result").innerHTML = "you don't have enough money for that.";
     }
     var c,d,e,first,second,third;
     var comb;
