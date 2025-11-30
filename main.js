@@ -39,7 +39,6 @@ function output(i1,i2,i3) {
 }
 
 function betTen(event) {
-    alert("peepeepoopoo");
     gamble(10);
 }
 function betHund(event) {
@@ -65,7 +64,6 @@ function gamble(bet) {
     comb = Number(String(first+1) + String(second+1) + String(third+1));
     var add = 16;
     output(first+add,second+add,third+add);
-    for (var i; )
     document.getElementById("money").innerHTML = "you have " +  String(money - bet) + "$";
     return 0;
 }
