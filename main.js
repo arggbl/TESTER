@@ -49,6 +49,7 @@ function allIn(event) {
 }
 
 function reset(event) {
+    document.getElementById("result").innerHTML = "RESET";
     money = 100;
 }
 
