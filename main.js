@@ -24,13 +24,8 @@ for (let i = 1; i < 90; i++) {
 // setup variables /\
 // setup functions \/
 function output(i1,i2,i3) {
-    var up1,down1,up2,down2,up3,down3;
-    up1 = i1 - 1;
-    down1 = (i1 + 1) % length
-    up2 = i2 - 1;
-    down2 = (i2 + 1) % length
-    up3 = i3 - 1;
-    down3 = (i3 + 1) % length
+    const up1 = i1 - 1,down1 = (i1 + 1) % length,up2 = i2 - 1,down2=(i2 + 1) % length,up3 = i3 - 1,down3=(i3 + 1) % length;
+
     var length = symbols.length;
     var string = `  <code>
   ____________________________________________ 
