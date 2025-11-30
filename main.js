@@ -33,7 +33,7 @@ function output(i1,i2,i3) {
  ______________       ____________________________ 
 | ` + symbols[i1-1] ` | ` + symbols[i2-1] + ` | ` + symbols[i3-1] + ` |     |🍬🍬🍬 - x2    🍋🍋 - x3   |
 |-`+symbols[i1]+`-|-`+symbols[i2]+`-|-`+symbols[i3]+`-|     |🍋🍋🍋 - x10  🐟🐟🐟 - x20  | 
-| ` + symbols[(i1+1)%length]+ ` | `+ symbols[(i2+1)%length] + ` | ` + symbols[(i3+1)%length] + ` |     | 🍓🍓🍓 - x 100        |
+| ` + symbols[ (i1+1) %length]+ ` | `+ symbols[ (i2+1) %length] + ` | ` + symbols[ (i3+1) %length] + ` |     | 🍓🍓🍓 - x 100        |
 \\--------------/     \\----------------------------/ </code>`;
     document.getElementById("output").innerHTML = string;
 }
