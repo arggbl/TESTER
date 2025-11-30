@@ -25,7 +25,7 @@ for (let i = 1; i < 90; i++) {
 function output(i1,i2,i3) {
     
     var length = symbols.length;
-    var string = `  
+    var string = `  <pre>
   ____________________________________________ <br>
  /* * * * * * * * * * * * * * * * * * * * * * \\ <br>
  | L O S E  Y O U R  C O L L E G E  M O N E Y | <br>
@@ -34,7 +34,7 @@ function output(i1,i2,i3) {
 | ${symbols[i1-1]} | ${symbols[i2-1]} | ${symbols[i3-1]} |     |🍬🍬🍬 - x2    🍋🍋 - x3   | <br>
 |-${symbols[i1]}-|-${symbols[i2]}-|-${symbols[i3]}-|     |🍋🍋🍋 - x10  🐟🐟🐟 - x20  | <br>
 | ${symbols[(i1+1)%length]} | ${symbols[(i2+1)%length]} | ${symbols[(i3+1)%length]} |     | 🍓🍓🍓 - x 100        | <br>
-\\--------------/     \\----------------------------/ <br>`;
+\\--------------/     \\----------------------------/ <pre>`;
     document.getElementById("output").innerHTML = string;
 }
 
