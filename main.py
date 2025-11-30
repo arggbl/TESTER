@@ -1,6 +1,6 @@
 import os
-from time import sleep
-from random import choice, randint
+#from time import sleep
+#from random import choice, randint
 from pyscript import document
 
 money = 100
