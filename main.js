@@ -48,7 +48,7 @@ function allIn(event) {
     gamble(money);
 }
 
-function reset(event) {
+function RESET(event) {
     money = 100;
 }
 
