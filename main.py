@@ -2,7 +2,7 @@
 #from random import choice, randint
 from pyscript import document
 import random
-
+global money, messages,symbols,chances,comos,multipliers
 money = 100
 messages= ["better keep gambling!","please dont urinate on the floor.", "you should watch this video: https://www.youtube.com/watch?v=AtzmDIlddPs", "remember kids, don't do drugs!", "Can you feel the crippling debt?"]
 symbols = ['🍬','🍋','🐟','🍓']
@@ -56,6 +56,7 @@ def output(i1, i2, i3, array, twisty, rev):
 \\--------------/     \\----------------------------/""")
 
 def gamble(event):
+    global money, messages,symbols,chances,comos,multipliers
     if money <= 0:
         moneydiv = document.querySelector("#result")
         moneydiv.innerText = choice("we require more minerals", "not enough minerals", "you have not enough minerals")
