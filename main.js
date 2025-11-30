@@ -63,7 +63,20 @@ function gamble(bet) {
     third = chances[e];
     comb = Number(String(first+1) + String(second+1) + String(third+1));
     var add = 16;
+    money-=bet;
+    document.getElementById("money").innerHTML = "you lost " + bet + " dollars!";
+    
     output(first+add,second+add,third+add);
+    for (var i = 0; i < len(combos); i++){
+        c = combos[i];
+        if (toString(c) in toString(comb)) {
+            let gain = multipliers[i] * bet;
+            document.getElementById("money").innerHTML = "you made " + gain + " dollars!";
+            money += gain + bet
+            break
+        }
+    }
+
     document.getElementById("money").innerHTML = "you have " +  String(money - bet) + "$";
     return 0;
 }
