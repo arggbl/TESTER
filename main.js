@@ -24,6 +24,47 @@ for (let i = 1; i < 90; i++) {
 
 // setup variables /\
 // setup functions \/
+
+function animate(i1,i2,i3) {
+    let limit1 = i1 + 16;
+    let limit2 = i2 + 16;
+    let limit3 = i3 + 16;
+
+    let pos1 = 0
+    let pos2 = 0
+    let pos3 = 0
+    for (let i = 0; i < 22; i++) {
+        if (pos1 < limit1) {
+            add = (Math.random() * 10) % 3 + 1;
+            if (add+pos1 <= limit1) {
+                pos1 += add;
+            }else {
+                pos1 += 1;
+            }
+        }
+        if (pos2 < limit2) {
+            add = (Math.random() * 10) % 3 + 1;
+            if (add+pos2 <= limit2) {
+                pos2 += add;
+            }else {
+                pos2 += 1;
+            }
+        }
+        if (pos3 < limit3) {
+            add = (Math.random() * 10) % 3 + 1;
+            if (add+pos3 <= limit3) {
+                pos3 += add;
+            }else {
+                pos3 += 1;
+            }
+        }
+        output(pos1,pos2,pos3);
+        setTimeout(() => {
+  console.log("Hey...<br>you're not supposed to be here :/");
+        }, "150");
+    }
+}
+
 function output(i1,i2,i3) {
     var string = `<pre>
    ____________________________________________ 
@@ -68,21 +109,13 @@ function gamble(bet) {
     c = (c - c % 1);
     d = (d - d % 1);
     e = (e - e % 1);
-    
-    console.log(c)
-    console.log(d)
-    console.log(e)
 
     let first = chances[c];
     let second = chances[d];
     let third = chances[e];
-    
-    console.log(first)
-    console.log(second)
-    console.log(third)
 
-    let comb = Number(String(first+1) + String(second+1) + String(third+1));
-    output(first,second,third)
+    let comb = (String(first+1) + String(second+1) + String(third+1));
+    output(first,second,third);
     
     money -= bet;
     document.getElementById("result").innerHTML = "you lost " + bet + " dollars.";
@@ -95,7 +128,20 @@ function gamble(bet) {
             money += gain + bet;
             document.getElementById("result").innerHTML = "you made " + gain + " dollars!";
             document.getElementById("money").innerHTML = "you have " +  String(money) + "$";
-            return 0;
+            break;
         }
+    }
+    if (money < 100) {
+        document.getElementById("hund").disabled = true;
+    }
+    if (money < 10) {
+        document.getElementById("ten").disabled = true;
+    }
+
+    if (money > 100) {
+        document.getElementById("hund").disabled = false;
+    }
+    if (money > 10) {
+        document.getElementById("ten").disabled = false;
     }
 }
