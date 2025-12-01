@@ -1,5 +1,5 @@
 var symbols = ["🍬","🍋","🐟","🍓"];
-symbols[5] = ["🍬"]
+symbols[5] = "🍬";
 symbols[-1] = "🍓";
 var money = 100;
 var chances = [];
@@ -25,44 +25,42 @@ for (let i = 1; i < 90; i++) {
 // setup variables /\
 // setup functions \/
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function animate(i1,i2,i3) {
+    document.getElementById("ten").disabled = true;
+    document.getElementById("hund").disabled = true;
+    document.getElementById("all").disabled = true;
+
     let limit1 = i1 + 16;
     let limit2 = i2 + 16;
     let limit3 = i3 + 16;
 
-    let pos1 = 0
-    let pos2 = 0
-    let pos3 = 0
+    let pos1 = 0;
+    let pos2 = 0;
+    let pos3 = 0;
     for (let i = 0; i < 22; i++) {
         if (pos1 < limit1) {
-            add = (Math.random() * 10) % 3 + 1;
-            if (add+pos1 <= limit1) {
-                pos1 += add;
-            }else {
-                pos1 += 1;
-            }
+            pos1 += 1;
         }
         if (pos2 < limit2) {
-            add = (Math.random() * 10) % 3 + 1;
-            if (add+pos2 <= limit2) {
-                pos2 += add;
-            }else {
-                pos2 += 1;
-            }
+            pos2 += 1;
         }
         if (pos3 < limit3) {
-            add = (Math.random() * 10) % 3 + 1;
-            if (add+pos3 <= limit3) {
-                pos3 += add;
-            }else {
-                pos3 += 1;
-            }
+            pos3 += 1;
         }
         output(pos1,pos2,pos3);
-        setTimeout(() => {
-  console.log("Hey...<br>you're not supposed to be here :/");
-        }, "150");
+        
+        sleep(150);
     }
+
+    document.getElementById("ten").disabled = false;
+    document.getElementById("hund").disabled = false;
+    document.getElementById("all").disabled = false;
+
+    return 0;
 }
 
 function output(i1,i2,i3) {
@@ -76,6 +74,7 @@ function output(i1,i2,i3) {
 |-${symbols[(+i1)%4]}-|-${symbols[(+i2)%4]}-|-${symbols[(+i3)%4]}-|     |🍋🍋🍋 - x10  🐟🐟🐟 - x20 | 
 | ${symbols[(+i1+1)%4]} | ${symbols[(+i2+1)%4]} | ${symbols[(+i3+1)%4]} |     |🍓🍓🍓 - x 100              | 
 \\---------------/      \\----------------------------/ </pre>`;
+    sleep(1000);
     document.getElementById("output").innerHTML = string;
 }
 
@@ -93,7 +92,10 @@ function reset(event) {
     document.getElementById("result").innerHTML = "RESET";
     document.getElementById("result").innerHTML = "RESET";
     document.getElementById("output").innerHTML = "RESET";
-    document.getElementById("money").innerHTML = "100";
+    document.getElementById("money").innerHTML = "you have " +  String(money) + "$";
+    document.getElementById("ten").disabled = false;
+    document.getElementById("hund").disabled = false;
+    document.getElementById("all").disabled = false;
     money = 100;
 }
 
@@ -115,7 +117,7 @@ function gamble(bet) {
     let third = chances[e];
 
     let comb = (String(first+1) + String(second+1) + String(third+1));
-    output(first,second,third);
+    animate(first,second,third);
     
     money -= bet;
     document.getElementById("result").innerHTML = "you lost " + bet + " dollars.";
@@ -138,10 +140,10 @@ function gamble(bet) {
         document.getElementById("ten").disabled = true;
     }
 
-    if (money > 100) {
+    if (money >= 100) {
         document.getElementById("hund").disabled = false;
     }
-    if (money > 10) {
+    if (money >= 10) {
         document.getElementById("ten").disabled = false;
     }
 }
