@@ -1,4 +1,5 @@
 var symbols = ["🍬","🍋","🐟","🍓"];
+symbols[5] = ["🍬"]
 symbols[-1] = "🍓";
 var money = 100;
 var chances = [];
@@ -10,7 +11,7 @@ for (let i = 1; i < 90; i++) {
     if (i <= 60) {
         chances.push(1);
     }
-    if (i <= 30) {
+    if (i <= 31) {
         chances.push(2);
     }
     if (i <= 8) {
@@ -24,17 +25,16 @@ for (let i = 1; i < 90; i++) {
 // setup variables /\
 // setup functions \/
 function output(i1,i2,i3) {
-    
-    var string = `  <code>
-  ________________________________
- /* * * * * * * * * * * * * * * * \\ 
- |  L O S E  Y O U R  M O N E Y   | 
- \\_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_/ 
- ______________       ____________________________ 
-| ` + i1` | ` + i2 + ` | ` + i3 + ` |     |🍬🍬🍬 - x2    🍋🍋 - x3   |
-|-`+i1+`-|-`+i2+`-|-`+i3+`-|     |🍋🍋🍋 - x10  🐟🐟🐟 - x20  | 
-| ` + i1+ ` | `+ i2 + ` | ` + i3 + ` |     | 🍓🍓🍓 - x 100        |
-\\--------------/     \\----------------------------/ </code>`;
+    var string = `<pre>
+   ____________________________________________ 
+  /* * * * * * * * * * * * * * * * * * * * * * \\ 
+  |  L  O  S  E   Y  O  U  R   M  O  N  E  Y ! | 
+  \\_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*/
+  ______________       ______________________________
+| ${symbols[(+i1-1)%4]} | ${symbols[(+i2-1)%4]} | ${symbols[(+i3-1)%4]} |     |🍬🍬🍬 - x2    🍋🍋 - x3   |
+|-${symbols[(+i1)%4]}-|-${symbols[(+i2)%4]}-|-${symbols[(+i3)%4]}-|     |🍋🍋🍋 - x10  🐟🐟🐟 - x20 | 
+| ${symbols[(+i1+1)%4]} | ${symbols[(+i2+1)%4]} | ${symbols[(+i3+1)%4]} |     |🍓🍓🍓 - x 100              | 
+\\---------------/      \\----------------------------/ </pre>`;
     document.getElementById("output").innerHTML = string;
 }
 
@@ -50,6 +50,9 @@ function allIn(event) {
 
 function reset(event) {
     document.getElementById("result").innerHTML = "RESET";
+    document.getElementById("result").innerHTML = "RESET";
+    document.getElementById("output").innerHTML = "RESET";
+    document.getElementById("money").innerHTML = "100";
     money = 100;
 }
 
@@ -57,32 +60,42 @@ function gamble(bet) {
     if (bet > money) {
         return 0;
     }
-    var c,d,e,first,second,third;
-    var comb;
-    c = Math.random() * 100;
-    d = Math.random() * 100;
-    e = Math.random() * 100;
+    // c,d,e,first,second,third;
+    let c = Math.random() * 100;
+    let d = Math.random() * 100;
+    let e = Math.random() * 100;
 
-    first = chances[c];
-    second = chances[d];
-    third = chances[e];
-    comb = Number(String(first+1) + String(second+1) + String(third+1));
-    var add = 16;
-    money-=bet;
-    document.getElementById("result").innerHTML = "you lost " + bet + " dollars!";
-    var length = symbols.length;
+    c = (c - c % 1);
+    d = (d - d % 1);
+    e = (e - e % 1);
+    
+    console.log(c)
+    console.log(d)
+    console.log(e)
 
-    output(first,second,third);
-    for (var i = 0; i < len(combos); i++){
-        c = combos[i];
-        if (toString(c) in toString(comb)) {
-            let gain = multipliers[i] * bet;
+    let first = chances[c];
+    let second = chances[d];
+    let third = chances[e];
+    
+    console.log(first)
+    console.log(second)
+    console.log(third)
+
+    let comb = Number(String(first+1) + String(second+1) + String(third+1));
+    output(first,second,third)
+    
+    money -= bet;
+    document.getElementById("result").innerHTML = "you lost " + bet + " dollars.";
+    document.getElementById("money").innerHTML = "you have " +  String(money) + "$";
+
+    for (let i = 0; i < combos.length; i++) {
+        if (comb.includes(combos[i])) {
+            // match found
+            let gain = bet * multipliers[i];
+            money += gain + bet;
             document.getElementById("result").innerHTML = "you made " + gain + " dollars!";
-            money += gain + bet
-            break
+            document.getElementById("money").innerHTML = "you have " +  String(money) + "$";
+            return 0;
         }
     }
-
-    document.getElementById("money").innerHTML = "you have " +  String(money - bet) + "$";
-    return 0;
 }
