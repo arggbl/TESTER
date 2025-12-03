@@ -25,42 +25,40 @@ for (let i = 1; i < 90; i++) {
 // setup variables /\
 // setup functions \/
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 function animate(i1,i2,i3) {
     document.getElementById("ten").disabled = true;
     document.getElementById("hund").disabled = true;
     document.getElementById("all").disabled = true;
+    const numbers = [i1,i2,i3];
+    
+    let f,s,t;
+    f = 0;
+    s = 0;
+    t = 0; 
+    for (let i = 0; i < Math.max(...numbers); i++) {
+        if (i < i1) {
+            f= (f + 1);
+        }
+        if (s < i2) {
+            s= (s + 1);
+        }
+        if (t < i3) {
+            t= (t + 1);
+        }
+        const timestamp = Date.now();
+        while (true) {
+            const temp = Date.now();
+            if (temp >= timestamp + 150) {
+                break
+            }
+        }
+        output(f%4,s%4,t%4);
 
-    let limit1 = i1 + 16;
-    let limit2 = i2 + 16;
-    let limit3 = i3 + 16;
-
-    let pos1 = 0;
-    let pos2 = 0;
-    let pos3 = 0;
-    for (let i = 0; i < 22; i++) {
-        if (pos1 < limit1) {
-            pos1 += 1;
-        }
-        if (pos2 < limit2) {
-            pos2 += 1;
-        }
-        if (pos3 < limit3) {
-            pos3 += 1;
-        }
-        output(pos1,pos2,pos3);
-        
-        sleep(150);
     }
-
     document.getElementById("ten").disabled = false;
     document.getElementById("hund").disabled = false;
     document.getElementById("all").disabled = false;
-
-    return 0;
 }
 
 function output(i1,i2,i3) {
@@ -74,7 +72,6 @@ function output(i1,i2,i3) {
 |-${symbols[(+i1)%4]}-|-${symbols[(+i2)%4]}-|-${symbols[(+i3)%4]}-|     |🍋🍋🍋 - x10  🐟🐟🐟 - x20 | 
 | ${symbols[(+i1+1)%4]} | ${symbols[(+i2+1)%4]} | ${symbols[(+i3+1)%4]} |     |🍓🍓🍓 - x 100              | 
 \\---------------/      \\----------------------------/ </pre>`;
-    sleep(1000);
     document.getElementById("output").innerHTML = string;
 }
 
@@ -115,9 +112,10 @@ function gamble(bet) {
     let first = chances[c];
     let second = chances[d];
     let third = chances[e];
-
     let comb = (String(first+1) + String(second+1) + String(third+1));
-    animate(first,second,third);
+
+    let add = 16;
+    animate(first+add,second+add,third+add);
     
     money -= bet;
     document.getElementById("result").innerHTML = "you lost " + bet + " dollars.";
@@ -138,6 +136,9 @@ function gamble(bet) {
     }
     if (money < 10) {
         document.getElementById("ten").disabled = true;
+    }
+    if (money == 0) {
+        document.getElementById("all").disabled = true;
     }
 
     if (money >= 100) {
