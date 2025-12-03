@@ -34,13 +34,22 @@ function animate(i1,i2,i3) {
     document.getElementById("ten").disabled = true;
     document.getElementById("hund").disabled = true;
     document.getElementById("all").disabled = true;
-    const numbers = [i1,i2,i3];
-    
+    const  max = 0;
+    if (i1 > max) {
+        max = i1;
+    }
+    if (i2 > max) {
+        max = i2;
+    }
+    if (i3 > max) {
+        max = i3;
+    }
     let f,s,t;
     f = 0;
     s = 0;
     t = 0; 
-    for (let i = 0; i < Math.max(...numbers)+1; i++) {
+    
+    for (let i = 0; i < max; i++) {
         if (i < i1) {
             f= (f + 1);
         }
