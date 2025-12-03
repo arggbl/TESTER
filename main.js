@@ -56,7 +56,7 @@ function animate(i1,i2,i3) {
     s = 0;
     t = 0; 
     
-    for (let i = 0; i < max; i++) {
+    for (let i = 0; i < max+16; i++) {
         if (i < i1) {
             f= (f + 1);
         }
