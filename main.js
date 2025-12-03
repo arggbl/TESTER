@@ -40,7 +40,7 @@ function animate(i1,i2,i3) {
     f = 0;
     s = 0;
     t = 0; 
-    for (let i = 0; i < Math.max(...numbers); i++) {
+    for (let i = 0; i < Math.max(...numbers)+1; i++) {
         if (i < i1) {
             f= (f + 1);
         }
