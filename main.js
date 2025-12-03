@@ -59,7 +59,7 @@ function animate(i1,i2,i3) {
         if (t < i3) {
             t= (t + 1);
         }
-        setTimeout(function() {output(f%4,s%4,t%4)}, 150 * i)
+        setTimeout(function() {output(f%4,s%4,t%4)}, 200 * (i+1))
         // setTimeout(output(f%4,s%4,t%4), 1500);
 
     }
