@@ -154,13 +154,6 @@ function gamble(bet) {
     if (money == 0) {
         document.getElementById("all").disabled = true;
     }
-
-    if (money >= 100) {
-        document.getElementById("hund").disabled = false;
-    }
-    if (money >= 10) {
-        document.getElementById("ten").disabled = false;
-    }
 }
 // document.getElementById('ten').onclick = betTen;
 // document.getElementById('hund').onclick = betHund;
