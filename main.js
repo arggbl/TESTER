@@ -160,3 +160,7 @@ function gamble(bet) {
     if (money >= 10) {
         document.getElementById("ten").disabled = false;
     }
+}
+document.getElementById('ten').onclick = betTen;
+document.getElementById('hund').onclick = betHund;
+document.getElementById('all').onclick = allIn;
