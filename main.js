@@ -50,24 +50,11 @@ function animate(i1,i2,i3) {
         if (t < i3) {
             t= (t + 1);
         }
+        setTimeout(function() {output(f%4,s%4,t%4)}, 150 * i)
         // setTimeout(output(f%4,s%4,t%4), 1500);
 
     }
     // Animation
-    setTimeout(function() {output(getRandomInt(4),getRandomInt(4),getRandomInt(4))}, 500);  // Using random fruit
-    console.log("Frame 1")
-    setTimeout(function() {output(getRandomInt(4),getRandomInt(4),getRandomInt(4))}, 1000);
-    console.log("Frame 2")
-    setTimeout(function() {output(getRandomInt(4),getRandomInt(4),getRandomInt(4))}, 1000);
-    console.log("Frame 3")
-    setTimeout(function() {output(getRandomInt(4),getRandomInt(4),getRandomInt(4))}, 1000);
-    console.log("Frame 4")
-    setTimeout(function() {output(getRandomInt(4),getRandomInt(4),getRandomInt(4))}, 1000);
-    console.log("Frame 5")
-    setTimeout(function() {output(getRandomInt(4),getRandomInt(4),getRandomInt(4))}, 1000);
-    console.log("Frame 6")
-    setTimeout(function() {output(f%4,s%4,t%4)}, 200)
-    console.log("Output")
     document.getElementById("ten").disabled = false;
     document.getElementById("hund").disabled = false;
     document.getElementById("all").disabled = false;
