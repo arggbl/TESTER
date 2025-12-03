@@ -25,6 +25,10 @@ for (let i = 1; i < 90; i++) {
 // setup variables /\
 // setup functions \/
 
+function getRandomInt(max) { // Generate a random integer between 0 and specified max int
+    return Math.floor(Math.random() * max);
+}
+
 
 function animate(i1,i2,i3) {
     document.getElementById("ten").disabled = true;
@@ -46,20 +50,29 @@ function animate(i1,i2,i3) {
         if (t < i3) {
             t= (t + 1);
         }
-        const timestamp = Date.now();
-        while (true) {
-            const temp = Date.now();
-            if (temp >= timestamp + 150) {
-                break
-            }
-        }
-        output(f%4,s%4,t%4);
+        // setTimeout(output(f%4,s%4,t%4), 1500);
 
     }
+    // Animation
+    setTimeout(function() {output(getRandomInt(4),getRandomInt(4),getRandomInt(4))}, 500);  // Using random fruit
+    console.log("Frame 1")
+    setTimeout(function() {output(getRandomInt(4),getRandomInt(4),getRandomInt(4))}, 1000);
+    console.log("Frame 2")
+    setTimeout(function() {output(getRandomInt(4),getRandomInt(4),getRandomInt(4))}, 1000);
+    console.log("Frame 3")
+    setTimeout(function() {output(getRandomInt(4),getRandomInt(4),getRandomInt(4))}, 1000);
+    console.log("Frame 4")
+    setTimeout(function() {output(getRandomInt(4),getRandomInt(4),getRandomInt(4))}, 1000);
+    console.log("Frame 5")
+    setTimeout(function() {output(getRandomInt(4),getRandomInt(4),getRandomInt(4))}, 1000);
+    console.log("Frame 6")
+    setTimeout(function() {output(f%4,s%4,t%4)}, 200)
+    console.log("Output")
     document.getElementById("ten").disabled = false;
     document.getElementById("hund").disabled = false;
     document.getElementById("all").disabled = false;
 }
+
 
 function output(i1,i2,i3) {
     var string = `<pre>
@@ -147,4 +160,3 @@ function gamble(bet) {
     if (money >= 10) {
         document.getElementById("ten").disabled = false;
     }
-}
