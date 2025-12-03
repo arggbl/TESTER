@@ -25,6 +25,12 @@ for (let i = 1; i < 90; i++) {
 // setup variables /\
 // setup functions \/
 
+function resetButtons() {
+    document.getElementById("ten").disabled = false;
+    document.getElementById("hund").disabled = false;
+    document.getElementById("all").disabled = false;
+}
+
 function getRandomInt(max) { // Generate a random integer between 0 and specified max int
     return Math.floor(Math.random() * max);
 }
@@ -34,7 +40,8 @@ function animate(i1,i2,i3) {
     document.getElementById("ten").disabled = true;
     document.getElementById("hund").disabled = true;
     document.getElementById("all").disabled = true;
-    const  max = 0;
+    let  max = 0;
+    
     if (i1 > max) {
         max = i1;
     }
@@ -64,9 +71,7 @@ function animate(i1,i2,i3) {
 
     }
     // Animation
-    document.getElementById("ten").disabled = false;
-    document.getElementById("hund").disabled = false;
-    document.getElementById("all").disabled = false;
+    setTimeout(function() {resetButtons()}, 150 * max)
 }
 
 
